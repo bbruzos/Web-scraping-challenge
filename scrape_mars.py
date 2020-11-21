@@ -12,11 +12,12 @@ def init_browser():
 def scrape():
 
     # apply code from mission_to_mars.ipynb
-    
+    browser = init_browser()
 
    # Scraping preparation and store data in dictionary
     get_mars_data = {}
     url = 'https://mars.nasa.gov/news/'
+    browser.visit(url)
     response= requests.get(url)
     soup = bs(response.text, 'html.parser')
 
