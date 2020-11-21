@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+</head>
+
+
+<body>
+  <main>
+    <section>
+      <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="box">
+            <section id="intro">
+              <h2>Latest Mars News</h2>
+              <hr>
+              <h4>{{mars_info.recent_news}}</h4>
+              <p>{{mars_info.recent_news_substance}}</p>
+              <hr>
+            </section>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+              <h4 class="title">Featured Mars Image</h4>
+
+              <a class="nav-link active" href="{{mars_info.splint_url}}" id="compBar">
+                <img class="panel"  style="width: 90%; height: auto;" alt="Featured Image" src="{{mars_info.splint_url}}" alt="Humidity Graph" ></a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+              <h4> Mars Facts</h4>
+
+              <table class="table table-striped tbl-column table-layout table-responsive table-hover">
+
+                <p>{{ mars_info.mars_facts_html|safe}}</p>
+
+              </table>
+                
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <section id="intro">
+            <h1 id="content1">Mars Hemispheres</h1>
+          </section>
+
+          <div class="row">
+
+            {% for hem_img_url in mars_info.hemisphere_image_urls %}
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+              <figure style="border:indigo;">
+                  <a class="nav-link active" href="{{hem_img_url.hem_img_urls}}" id="compBar">
+                    <img class="panel"  style="width: 90%; auto;" alt="Featured Image" src="{{hem_img_url.hem_img_urls}}" alt="Humidity Graph" ></a>
+                  <h3 style="padding:0; margin-top: 0; align-content:center">{{hem_img_url.title}}</h3>    
+                  <hr>
+              </figure>
+              
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+  </main>
+
+</body>
+
+</html>

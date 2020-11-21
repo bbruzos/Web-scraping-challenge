@@ -12,8 +12,7 @@ def init_browser():
 def scrape():
 
     # apply code from mission_to_mars.ipynb
-    #inital the connection to chrome browser
-    browser = init_browser()
+    
 
    # Scraping preparation and store data in dictionary
     get_mars_data = {}
@@ -52,7 +51,7 @@ def scrape():
     # *Visit the Mars Facts webpage here and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
     # *Use Pandas to convert the data to a HTML table string.
 
-   url = 'https://space-facts.com/mars/'
+    url = 'https://space-facts.com/mars/'
     # Read table data from url
     facts_table = pd.read_html(url)
 
@@ -61,7 +60,7 @@ def scrape():
     mars_facts_df.columns = ['Type', 'Measurement']
     mars_facts_df
 
-    create HTML table
+    # create HTML table
     html_table = mars_facts_df.to_html(border=3)
     #Remove enter characters 
     get_mars_data['mars_facts_html'] = html_table.replace('\n', '')
